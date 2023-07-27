@@ -68,6 +68,7 @@ class SignUpPage{
     }
 
     async submitSignUp () {
+        await this.btnSubmit.waitForDisplayed({timeout:30000})
         await this.btnSubmit.click();
     }
 }

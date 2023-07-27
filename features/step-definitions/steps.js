@@ -29,5 +29,6 @@ When(/^I insertxxx businees account with (.*) and (.*) and (.*) and (.*) and (.*
 
 Then(/^I see (.*) on dasboard page$/, async (listApp) => {
 	await BussinessPage.submitGetStarted()
-	await BussinessPage.validateListApps(listApp)
+	const myArray = listApp.split(",");
+	expect(await BussinessPage.getappListsTexty()).to.include.members(myArray)
 });

@@ -56,6 +56,25 @@ class BussinessPage{
     get btnGetStarted () {
         return $('button.welcome-screen-content-button');
     }
+
+    async getappListsTexty() {
+        await browser.pause(5000)
+        const listE = await $$('//div[@class="icons__title"]')
+        const listArr = []
+        for (const ele of listE){
+            listArr.push(await ele.getText())
+        }
+        return listArr
+    }
+
+    // async getappListsText() {
+    // //    return this.appLists.map((element) => 
+    // //    console.log("test "+element.getText())
+    // //    );
+    //     const liTexts = await Promise.all(await this.appLists.map((e)=> e.getText()))
+    //     console.log("tesst "+liTexts)
+    //     return liTexts;
+    // }
     /**
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
@@ -95,14 +114,19 @@ class BussinessPage{
         await this.btnGetStarted.click();
     }
 
-    async validateListApps (listApp){
-        await browser.pause(5000)
-        const myArray = listApp.split(",");
-        const elems = await browser.$$('//div[@class="icons__title"]')
-	    for await (const m of myArray) {
-		    expect(await elems.map((elem) => elem.getText())).to.include(m)
-	    }
-    }
+    // async validateListApps (listApp){
+    //     await browser.pause(5000)
+    //     const myArray = listApp.split(",");
+        // await $$('//div[@class="icons__title"]').map((element) => 
+        // console.log("ter "+ element.getText()))
+        //await this.getappListsText()
+        // const elems = browser.$$('//div[@class="icons__title"]')
+        // console.log("kom "+elems);
+	    // for await (const m of myArray) {
+		//     expect(await elems.map((elem) => elem.getText())).to.include(m)
+	    // }
+        //expect(await elems.map((elem) => elem.getText())).to.include(m)
+    //}
 }
 
 module.exports = new BussinessPage();
