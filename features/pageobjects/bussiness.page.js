@@ -97,7 +97,7 @@ class BussinessPage{
 
     async validateListApps (listApp){
         await browser.pause(5000)
-        const myArray = listApp.split(",");c
+        const myArray = listApp.split(",");
         const elems = await browser.$$('//div[@class="icons__title"]')
 	    for await (const m of myArray) {
 		    expect(await elems.map((elem) => elem.getText())).to.include(m)
